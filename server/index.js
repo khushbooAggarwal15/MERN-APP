@@ -26,6 +26,7 @@ app.use(express.json());
 app.use(helmet()); //Tells browsers to prefer HTTPS
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" })); //Blocks others from loading your resources cross-origin
 app.use(morgan("common"));
+app.use(bodyParser);
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
