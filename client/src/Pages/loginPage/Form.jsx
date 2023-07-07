@@ -38,7 +38,7 @@ const initialValuesRegister = {
   password: "",
   location: "",
   occupation: "",
-  picture: "",
+  picturePath: "",
 };
 
 const initialValuesLogin = {
@@ -55,33 +55,33 @@ const Form = () => {
   const isLogin = pageType === "login";
   const isRegister = pageType === "register";
 
-  const register = async (values, onSubmitProps) => {
-
-  
-    const formData = {
+  const register  = async (values, onSubmitProps) => {
+   const formData = {
       firstName: values.firstName,
       lastName: values.lastName,
       email: values.email,
       password: values.password,
       location: values.location,
       occupation: values.occupation,
-      picture: values.picture.name,
+      picturePath: values.picture.name,
     };
-    
-    console.log(formData)
+
+  console.log(formData)
     const savedUserResponse = await fetch(
       "http://localhost:3001/auth/register",
       {
         method: "POST",
-        body: formData,
+        body:  JSON.stringify(formData),
+      
       }
     );
     const savedUser = await savedUserResponse.json();
-    onSubmitProps.resetForm();
+    // onSubmitProps.resetForm();
 
-    if (savedUser) {
-      setPageType("login");
-    }
+
+    // if (savedUser) {
+    //   setPageType("login");
+    // }
   };
 
   const login = async (values, onSubmitProps) => {
