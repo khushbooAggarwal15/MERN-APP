@@ -71,17 +71,18 @@ const Form = () => {
       "http://localhost:3001/auth/register",
       {
         method: "POST",
+        headers: { "Content-Type": "application/json" },
         body:  JSON.stringify(formData),
       
       }
     );
     const savedUser = await savedUserResponse.json();
-    // onSubmitProps.resetForm();
+    onSubmitProps.resetForm();
 
 
-    // if (savedUser) {
-    //   setPageType("login");
-    // }
+    if (savedUser) {
+      setPageType("login");
+    }
   };
 
   const login = async (values, onSubmitProps) => {
